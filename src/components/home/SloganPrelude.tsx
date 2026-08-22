@@ -4,11 +4,6 @@ import { NornThreads } from "@/features/prelude/NornThreads";
 export function SloganPrelude({ content }: { content: PortfolioContent }) {
   return (
     <section className="prelude section-shell" data-chapter="prelude">
-      <div className="prelude-folio" data-reveal>
-        <span>Portfolio for software engineering</span>
-        <span>2026 · Opus I</span>
-      </div>
-
       <div className="prelude-slogan">
         <p className="prelude-role" data-reveal>{content.profile.role}</p>
         <h1 data-reveal aria-label={content.hero.slogan}>
@@ -22,10 +17,10 @@ export function SloganPrelude({ content }: { content: PortfolioContent }) {
       </div>
 
       <p className="prelude-statement" data-reveal>{content.hero.statement}</p>
-      <div className="prelude-byline" data-reveal>
-        <span>{content.profile.name} / {content.profile.englishName}</span>
-        <span>{content.profile.role}</span>
-      </div>
+      <a className="prelude-scroll-cue" href="#work" data-reveal>
+        <span>{content.hero.explore}</span>
+        <i aria-hidden="true">↓</i>
+      </a>
       <NornThreads decorative className="prelude-threads" />
     </section>
   );

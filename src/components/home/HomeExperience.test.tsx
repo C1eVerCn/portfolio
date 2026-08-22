@@ -14,6 +14,8 @@ import {
   getPreludeStageEntrance,
   resolveVisualPreludeFrame,
   resolvePreludeIntroTargets,
+  getSectionRevealConfig,
+  HOME_REVEAL_SELECTOR,
   HOME_SCROLL_REVEAL_TARGETS,
   HOME_TIMELINE_LABELS,
   HomeExperience,
@@ -151,6 +153,19 @@ describe("HomeExperience", () => {
     },
   );
 
+  it("keeps the hero minimal while preserving a clear way into the work", () => {
+    const { container } = renderHome();
+
+    expect(container.querySelector(".prelude-folio")).not.toBeInTheDocument();
+    expect(container.querySelector(".prelude-byline")).not.toBeInTheDocument();
+    expect(screen.getByText(zhContent.profile.role)).toBeInTheDocument();
+    expect(screen.getByText(zhContent.hero.sloganEn)).toBeInTheDocument();
+    expect(screen.getByText(zhContent.hero.statement)).toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: zhContent.hero.explore }),
+    ).toHaveAttribute("href", "#work");
+  });
+
   it("autoplays once per session and records a skip", async () => {
     const first = renderHome();
     const skip = await screen.findByRole("button", { name: "跳过序章" });
@@ -269,6 +284,14 @@ describe("HomeExperience", () => {
     expect(
       container.querySelector(HOME_SCROLL_REVEAL_TARGETS.interlude),
     ).toBeInTheDocument();
+  });
+
+  it("reveals content from its own section with a one-shot viewport trigger", () => {
+    expect(HOME_REVEAL_SELECTOR).toBe("[data-reveal]");
+    expect(getSectionRevealConfig()).toEqual({
+      once: true,
+      start: "top 82%",
+    });
   });
 
   it("opens the mythic book from the side on desktop and from the top on mobile", () => {

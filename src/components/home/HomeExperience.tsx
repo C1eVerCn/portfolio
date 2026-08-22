@@ -32,6 +32,15 @@ export const HOME_SCROLL_REVEAL_TARGETS = {
   interlude: ".movements-heading",
 } as const;
 
+export const HOME_REVEAL_SELECTOR = "[data-reveal]";
+
+export function getSectionRevealConfig() {
+  return {
+    once: true,
+    start: "top 82%",
+  } as const;
+}
+
 export type VisualPreludeFrame = "cover" | "opening" | "complete";
 
 export function resolveVisualPreludeFrame(
@@ -474,7 +483,37 @@ export function HomeExperience({ content, locale }: { content: PortfolioContent;
       "(prefers-reduced-motion: no-preference)",
       () => {
         const desktop = window.matchMedia("(min-width: 769px)").matches;
-        gsap.set("[data-chapter]:not([data-chapter='prelude']) [data-reveal]", { y: 34, opacity: 0 });
+        const revealConfig = getSectionRevealConfig();
+        const sections = gsap.utils.toArray<HTMLElement>(
+          "[data-chapter]",
+          root.current,
+        );
+
+        for (const section of sections) {
+          const targets = Array.from(
+            section.querySelectorAll<HTMLElement>(HOME_REVEAL_SELECTOR),
+          );
+          if (targets.length === 0) continue;
+
+          gsap.fromTo(
+            targets,
+            { autoAlpha: 0, yPercent: 12 },
+            {
+              autoAlpha: 1,
+              clearProps: "opacity,transform,visibility",
+              duration: 0.78,
+              ease: "power3.out",
+              immediateRender: false,
+              stagger: 0.06,
+              scrollTrigger: {
+                trigger: section,
+                ...revealConfig,
+              },
+              yPercent: 0,
+            },
+          );
+        }
+
         const timeline = gsap.timeline({
           defaults: { ease: "power2.out" },
           scrollTrigger: {
@@ -491,36 +530,29 @@ export function HomeExperience({ content, locale }: { content: PortfolioContent;
           .to(mythicMotionState, { lightX: -0.6, lightY: 0.65, emboss: 0.22, progress: 0.12, duration: 1.1 })
           .addLabel("threads")
           .set(mythicMotionState, { movement: "exposition", dynamic: "mf" })
-          .to("[data-chapter='threads'] [data-reveal]", { y: 0, opacity: 1, duration: 0.82, stagger: 0.1 })
           .to(mythicMotionState.threads, { past: 1, present: 0.76, future: 0.46, tension: 0.48, duration: 1 }, "threads")
           .to(mythicMotionState, { lightX: 0.15, lightY: 0.4, emboss: 0.3, fold: 0.08, progress: 0.28, duration: 1 }, "threads")
           .addLabel("exposition")
           .set(mythicMotionState, { movement: "exposition", dynamic: "mf" })
-          .to("[data-chapter='exposition'] [data-reveal]", { y: 0, opacity: 1, duration: 0.8, stagger: 0.08 })
           .to(mythicMotionState.threads, { past: 1, present: 1, future: 0.72, tension: 0.36, duration: 1 }, "exposition")
           .to(mythicMotionState, { lightX: 0.85, emboss: 0.34, fold: 0.12, progress: 0.4, duration: 1 }, "exposition")
           .addLabel("hermes")
           .set(mythicMotionState, { movement: "hermes", dynamic: "f" })
-          .to(".hermes-home-movement [data-reveal], .hermes-home-movement .feishu-product-plate, .hermes-home-movement [data-hermes-layer]", { y: 0, opacity: 1, duration: 0.9, stagger: 0.1 })
           .to(mythicMotionState.threads, { tension: 0.72, duration: 1 }, "hermes")
           .to(mythicMotionState, { lightX: 1.5, lightY: -0.3, emboss: 0.48, fold: 0.62, progress: 0.58, duration: 1 }, "hermes")
           .addLabel("interlude")
-          .to(HOME_SCROLL_REVEAL_TARGETS.interlude, { y: 0, opacity: 1, duration: 0.72 }, "interlude")
           .to(mythicMotionState.threads, { tension: 0.16, duration: 0.74 }, "interlude")
           .to(mythicMotionState, { dynamic: "p", lightX: 0.1, lightY: 0.05, emboss: 0.28, fold: 0.36, progress: 0.68, duration: 0.74 }, "interlude")
           .addLabel("bhms")
           .set(mythicMotionState, { movement: "bhms", dynamic: "mf" })
-          .to(".bhms-home-movement [data-reveal], .bhms-home-movement .bhms-workspace-plate, .bhms-home-movement [data-evidence-node]", { y: 0, opacity: 1, duration: 0.9, stagger: 0.08 })
           .to(mythicMotionState.threads, { future: 1, tension: 0.52, duration: 1 }, "bhms")
           .to(mythicMotionState, { lightX: -1.15, lightY: -0.7, emboss: 0.38, fold: 0.88, progress: 0.78, duration: 1 }, "bhms")
           .addLabel("recapitulation")
           .set(mythicMotionState, { movement: "recapitulation", dynamic: "p" })
-          .to("[data-chapter='recapitulation'] [data-reveal]", { y: 0, opacity: 1, duration: 0.8, stagger: 0.1 })
           .to(mythicMotionState.threads, { tension: 0.2, duration: 1 }, "recapitulation")
           .to(mythicMotionState, { lightX: 0.2, lightY: 0.4, emboss: 0.18, fold: 0.24, progress: 0.9, duration: 1 }, "recapitulation")
           .addLabel("coda")
           .set(mythicMotionState, { movement: "coda", dynamic: "p" })
-          .to("[data-chapter='coda'] [data-reveal]", { y: 0, opacity: 1, duration: 0.9, stagger: 0.12 })
           .to(mythicMotionState.threads, { past: 1, present: 1, future: 1, tension: 0, duration: 1 }, "coda")
           .to(mythicMotionState, { lightX: -0.4, lightY: 0.8, emboss: 0.1, fold: 0, progress: 1, duration: 1 }, "coda");
 

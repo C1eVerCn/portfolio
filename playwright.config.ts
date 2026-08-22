@@ -2,6 +2,9 @@ import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
   testDir: "./e2e",
+  // Next 16's dev manifests are shared mutable build state. Serial E2E execution
+  // keeps route compilation and visual snapshots deterministic on macOS.
+  workers: 1,
   use: {
     baseURL: "http://localhost:3000",
     trace: "on-first-retry",

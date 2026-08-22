@@ -1,0 +1,14 @@
+.git
+.next
+.agents
+.superpowers
+.artifacts
+.visual-review
+coverage
+node_modules
+playwright-report
+test-results
+*.tsbuildinfo
+.DS_Store
+.env
+.env.local
