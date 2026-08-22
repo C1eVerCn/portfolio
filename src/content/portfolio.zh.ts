@@ -1,0 +1,95 @@
+import type { PortfolioContent } from "./types";
+
+export const zhContent: PortfolioContent = {
+  profile: {
+    name: "谌一航",
+    englishName: "Chen Yihang",
+    role: "AI 全栈工程师",
+    email: "19943221833@163.com",
+    github: "https://github.com/C1eVerCn",
+  },
+  nav: { work: "项目", principles: "原则", about: "关于", contact: "联系" },
+  hero: {
+    slogan: "智绘万物",
+    sloganEn: "Intelligence Shapes Everything.",
+    statement: "将不确定的智能，编织成可解释、可执行、可交付的系统。",
+    explore: "翻阅作品",
+    skipPrelude: "跳过序章",
+    replayPrelude: "重播序章",
+  },
+  threads: [
+    {
+      id: "past",
+      norseName: "Urðr",
+      label: "过去保存证据",
+      body: "数据、日志与上下文让每个结论保留来路。",
+    },
+    {
+      id: "present",
+      norseName: "Verðandi",
+      label: "现在执行决策",
+      body: "状态、权限与工具调用共同约束正在发生的动作。",
+    },
+    {
+      id: "future",
+      norseName: "Skuld",
+      label: "未来表达不确定性",
+      body: "预测、风险与待确认副作用必须被准确描述。",
+    },
+  ],
+  capabilityIntro: {
+    label: "能力图谱",
+    title: "不是技能清单，是一条完整交付链。",
+    body: "六个工程层在同一个系统里协作：从用户意图，到受控执行，再到可观测的结果。",
+  },
+  capabilities: [
+    { id: "product", label: "产品与交互", items: ["需求拆解", "交互原型", "复杂流程设计"] },
+    { id: "frontend", label: "前端工程", items: ["React / TypeScript", "数据可视化", "动效系统"] },
+    { id: "backend", label: "后端与 API", items: ["Python / FastAPI", "事件流", "状态与事务"] },
+    { id: "agent", label: "Agent 与 MCP", items: ["工具编排", "权限边界", "确定性执行"] },
+    { id: "ml", label: "机器学习与数据", items: ["时序建模", "不确定性", "GraphRAG"] },
+    { id: "infra", label: "基础设施与可靠性", items: ["测试体系", "可观测性", "隐私与降级"] },
+  ],
+  workIntro: {
+    label: "代表项目",
+    title: "两个系统，两种可信问题。",
+    body: "Hermes 控制智能体的真实副作用；BHMS 把模型预测组织成可追踪的决策依据。",
+    openCase: "查看完整案例",
+  },
+  projects: [
+    {
+      slug: "hermes",
+      index: "01",
+      eyebrow: "飞书智能体",
+      title: "从概率性对话走向确定性行动",
+      thesis: "LLM 负责理解，确定性代码控制真实副作用。",
+      summary: "一个面向车辆预订的飞书智能体，用分层路由、服务端身份、dry-run 与相邻确认窗口守住执行边界。",
+      accent: "cyan",
+      tags: ["Python", "LLM Agent", "MCP", "Feishu", "ACL"],
+    },
+    {
+      slug: "bhms",
+      index: "02",
+      eyebrow: "电池健康管理系统",
+      title: "预测结果并不等于可信决策",
+      thesis: "预测必须带着不确定性、证据链和交付上下文。",
+      summary: "一套覆盖多源数据、生命周期预测、异常分析、GraphRAG 解释和报告导出的全栈系统。",
+      accent: "amber",
+      tags: ["React", "FastAPI", "PyTorch", "GraphRAG", "ECharts"],
+    },
+  ],
+  principleIntro: { label: "工程原则", title: "我如何决定系统应该在哪里变得确定。" },
+  principles: [
+    { index: "01", title: "不确定性止于边界", body: "生成模型可以提出意图，但权限、参数校验和真实写入必须由可测试的代码决定。" },
+    { index: "02", title: "结果必须伴随证据", body: "一个数字只有连接到数据、模型假设和决策依据时，才足以被行动采用。" },
+    { index: "03", title: "端到端负责", body: "我把界面、服务、模型、测试和交付视为同一个产品问题，而不是彼此孤立的工种。" },
+  ],
+  about: {
+    label: "关于",
+    title: "专注 AI 系统落地的全栈工程实践。",
+    body: "这里的两个项目均由我独立设计与开发。我喜欢把复杂流程做得可理解，也把智能能力约束到可验证、可维护的工程边界里。",
+    email: "发邮件",
+    github: "GitHub",
+  },
+  footer: "设计与开发：谌一航",
+};

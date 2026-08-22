@@ -1,0 +1,95 @@
+import type { PortfolioContent } from "./types";
+
+export const enContent: PortfolioContent = {
+  profile: {
+    name: "谌一航",
+    englishName: "Chen Yihang",
+    role: "Full-stack AI Engineer",
+    email: "19943221833@163.com",
+    github: "https://github.com/C1eVerCn",
+  },
+  nav: { work: "Work", principles: "Principles", about: "About", contact: "Contact" },
+  hero: {
+    slogan: "Intelligence Shapes Everything.",
+    sloganEn: "智绘万物",
+    statement: "Weaving uncertain intelligence into systems that can be explained, executed and delivered.",
+    explore: "Enter the work",
+    skipPrelude: "Skip Prelude",
+    replayPrelude: "Replay Prelude",
+  },
+  threads: [
+    {
+      id: "past",
+      norseName: "Urðr",
+      label: "The past preserves evidence",
+      body: "Data, logs and context keep every conclusion traceable.",
+    },
+    {
+      id: "present",
+      norseName: "Verðandi",
+      label: "The present executes decisions",
+      body: "State, permissions and tool calls constrain the action in progress.",
+    },
+    {
+      id: "future",
+      norseName: "Skuld",
+      label: "The future expresses uncertainty",
+      body: "Forecasts, risks and unconfirmed side effects must remain explicit.",
+    },
+  ],
+  capabilityIntro: {
+    label: "Capability atlas",
+    title: "Not a skill list. A complete delivery chain.",
+    body: "Six engineering layers operate as one system—from user intent to controlled execution and observable outcomes.",
+  },
+  capabilities: [
+    { id: "product", label: "Product & interaction", items: ["Problem framing", "Prototyping", "Complex flows"] },
+    { id: "frontend", label: "Frontend engineering", items: ["React / TypeScript", "Data visualization", "Motion systems"] },
+    { id: "backend", label: "Backend & API", items: ["Python / FastAPI", "Event flows", "State & transactions"] },
+    { id: "agent", label: "Agent & MCP", items: ["Tool orchestration", "Permission boundaries", "Deterministic execution"] },
+    { id: "ml", label: "ML & data", items: ["Time-series models", "Uncertainty", "GraphRAG"] },
+    { id: "infra", label: "Infrastructure & reliability", items: ["Test systems", "Observability", "Privacy & fallback"] },
+  ],
+  workIntro: {
+    label: "Selected work",
+    title: "Two systems. Two questions of trust.",
+    body: "Hermes controls real agent side effects. BHMS turns model output into traceable decision evidence.",
+    openCase: "View full case",
+  },
+  projects: [
+    {
+      slug: "hermes",
+      index: "01",
+      eyebrow: "Feishu agent",
+      title: "From probabilistic conversation to deterministic action",
+      thesis: "The LLM interprets; deterministic code controls real side effects.",
+      summary: "A vehicle-booking Feishu agent that uses layered routing, server-side identity, dry-runs and an adjacent confirmation window to protect execution boundaries.",
+      accent: "cyan",
+      tags: ["Python", "LLM Agent", "MCP", "Feishu", "ACL"],
+    },
+    {
+      slug: "bhms",
+      index: "02",
+      eyebrow: "Battery health management",
+      title: "A prediction is not yet a decision",
+      thesis: "Prediction needs uncertainty, evidence and delivery context.",
+      summary: "A full-stack system spanning multi-source data, lifecycle forecasting, anomaly analysis, GraphRAG explanations and report export.",
+      accent: "amber",
+      tags: ["React", "FastAPI", "PyTorch", "GraphRAG", "ECharts"],
+    },
+  ],
+  principleIntro: { label: "Engineering principles", title: "How I decide where a system must become deterministic." },
+  principles: [
+    { index: "01", title: "Uncertainty stops at boundaries", body: "A generative model can infer intent. Permissions, validation and real writes must remain testable code." },
+    { index: "02", title: "Results need evidence", body: "A number becomes actionable only when it connects back to data, assumptions and a decision basis." },
+    { index: "03", title: "End-to-end ownership", body: "I treat interface, service, model, testing and delivery as one product problem—not separate disciplines." },
+  ],
+  about: {
+    label: "About",
+    title: "Full-stack engineering for applied AI systems.",
+    body: "Both projects here were independently designed and built by me. I enjoy making complex workflows legible and constraining intelligence within verifiable, maintainable boundaries.",
+    email: "Email me",
+    github: "GitHub",
+  },
+  footer: "Designed and built by Chen Yihang",
+};
